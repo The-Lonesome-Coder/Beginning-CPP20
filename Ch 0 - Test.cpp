@@ -7,29 +7,8 @@ int main(void)
 	std::cout << "Test 2";
 	std::cout << "Test 3";
 	std::cout << "Test 4";
+	std::cout << "Test 5";
 	std::cout << std::endl;
 
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
