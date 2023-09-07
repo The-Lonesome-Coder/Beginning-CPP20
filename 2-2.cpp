@@ -1,4 +1,4 @@
-#include <cmath>   // pow()
+#include <cmath>   // std::pow()
 #include <format>
 #include <iostream>
 #include <numbers>   // std::numbers::pi
@@ -7,7 +7,7 @@
 // Function for calculating the area of circle
 double circle_area(double radius)
 {
-    return pow(radius, 2.0) * std::numbers::pi;
+    return std::pow(radius, 2.0) * std::numbers::pi;
 }
 
 
