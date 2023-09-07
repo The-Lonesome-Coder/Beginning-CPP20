@@ -1,7 +1,7 @@
-#include <cmath>
+#include <cmath>   // pow()
 #include <format>
 #include <iostream>
-#include <numbers>
+#include <numbers>   // std::numbers::pi
 
 
 // Function for calculating the area of circle
