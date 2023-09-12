@@ -13,5 +13,6 @@ int main(void)
 
     std::cout << std::format(" {:^34} {:^34} {:^34}\n", "value", "~value", "~value + 1");
     std::cout << std::format(" {:#034b} {:#034b} {:#034b}\n", value, inverted, inverted + 1);
-    std::cout << std::format(" {:^34} {:^34} {:^34}\n", value, ~value, ~value + 1);
+    std::cout << std::format(" {:^34} {:^34} {:^34}\n", value, ~value, ~value + 1)
+              << std::endl;
 }
