@@ -8,8 +8,6 @@ int main(void)
 {
     constexpr auto reject = "Sorry. Your {} does not meet the requirement.";
 
-
-
     // Start interview
     // Age
     int age = 0;
