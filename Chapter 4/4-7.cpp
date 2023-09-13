@@ -7,11 +7,11 @@
 bool is_vowel(char letter)
 {
     switch (letter)
-        {
-            case 'a': case 'e': case 'i': case 'o': case 'u':
-            case 'A': case 'E': case 'I': case 'O': case 'U':
-                return true;
-        }
+    {
+        case 'a': case 'e': case 'i': case 'o': case 'u':
+        case 'A': case 'E': case 'I': case 'O': case 'U':
+            return true;
+    }
 
     return false;
 }
