@@ -1,5 +1,4 @@
 #include <algorithm>   // std::swap()
-#include <exception>   // std::out_of_range()
 #include <format>
 #include <iostream>
 
@@ -15,7 +14,10 @@ int main(void)
     // Check validity
     if (num1 <= 0 || num2 <= 0)
     {
-        throw std::out_of_range("The input number should be a non-zero positive integer.");
+        std::cout << "The input number should be a non-zero positive integer."
+                  << std::endl;
+
+        return 1;
     }
 
     // Set num1 to be smaller than num2

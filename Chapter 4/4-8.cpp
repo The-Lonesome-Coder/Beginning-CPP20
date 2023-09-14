@@ -1,7 +1,6 @@
 #include <cmath>
 #include <format>
 #include <iostream>
-#include <stdexcept>
 
 
 int main(void)
@@ -13,7 +12,8 @@ int main(void)
 
     if (total < 0.0 || total > 10.0)
     {
-        throw std::out_of_range("The input should be within 0 and 10.");
+        std::cout << "The input should be within 0 and 10."
+                  << std::endl;
 
         return 1;
     }

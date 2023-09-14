@@ -1,5 +1,4 @@
 #include <compare>
-#include <exception>
 #include <iostream>
 
 
@@ -12,7 +11,10 @@ int main(void)
 
     if (num1 <= 0 || num1 > 100)
     {
-        throw std::out_of_range("Input integer should be within 1 and 100.");
+        std::cout << "Input integer should be within 1 and 100."
+                  << std::endl;
+
+        return 1;
     }
 
     // Trying the three-way operator
