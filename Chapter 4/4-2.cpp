@@ -3,7 +3,6 @@
 #include <iostream>
 
 
-
 int main(void)
 {
     int num1 = 0, num2 = 0;
