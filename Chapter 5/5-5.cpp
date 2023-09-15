@@ -44,7 +44,7 @@ int main(void)
     // Print reverse string
     for (int i = 0; i < size; ++i)
     {
-        std::cout << string[i];
+        std::cout << r_string[i];
     }
 
     std::cout << std::endl;
