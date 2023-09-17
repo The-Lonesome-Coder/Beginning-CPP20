@@ -1,6 +1,7 @@
 #include <cmath>
 #include <format>
 #include <iostream>
+#include <memory>
 #include <vector>
 
 
@@ -11,7 +12,7 @@ int main(void)
     std::cout << "Please enter the size of the vector: ";
     std::cin >> size;
 
-    auto vec = new std::vector<double>(size);
+    auto vec = std::make_unique<std::vector<double>>(size);
 
     for(int i = 0; i < size; ++i)
     {
@@ -28,5 +29,5 @@ int main(void)
     std::cout << std::format("The result is {}", std::sqrt(sum * 6.0))
               << std::endl;
 
-    delete[] vec;
+    return 0;
 }
