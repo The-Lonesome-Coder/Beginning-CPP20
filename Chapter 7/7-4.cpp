@@ -34,6 +34,14 @@ int main(void)
     std::cout << "Please enter the second string: ";
     std::getline(std::cin, str2);
 
+    if (str1.empty() || str2.empty())
+    {
+        std::cout << "The input must not be empty"
+                  << std::endl;
+
+        return 1;
+    }
+
     std::vector<char> vec1 = char_split(str1);
     std::vector<char> vec2 = char_split(str2);
 
