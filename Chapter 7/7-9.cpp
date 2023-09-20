@@ -86,7 +86,7 @@ bool tautogram(std::string &str)
     }
 
     // Extra code for deleting the first character
-    size_t pos = str.find_first_of(" t");
+    size_t pos;
 
     while (pos != std::string::npos)
     {
