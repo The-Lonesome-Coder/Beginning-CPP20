@@ -9,7 +9,7 @@ void show_data(std::span<int> data, std::string_view title = "Data Values", size
 {
     std::cout << title << std::endl;
 
-    for (size_t i = 0; i < data.size(); ++i)
+    for (size_t i = 0, size = data.size(); i < size; ++i)
     {
         std::cout << std::format("{:{}}", data[i], width);
 
