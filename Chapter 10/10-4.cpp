@@ -1,6 +1,5 @@
 #include <array>
 #include <iostream>
-#include <span>
 #include <vector>
 
 template <typename T, size_t N>
