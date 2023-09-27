@@ -4,9 +4,16 @@
 
 
 template <typename T>
-decltype(auto) larger(T &a, T &b)
+T larger(T a, T b)
 {
     return a > b ? a : b;
+}
+
+
+template <typename T>
+const T* larger(const T *a, const T *b)
+{
+    return std::string_view{a} > std::string_view{b}? a : b;
 }
 
 
