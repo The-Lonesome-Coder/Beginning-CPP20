@@ -4,7 +4,7 @@ import <format>;
 import <iostream>;
 
 
-size_t max_word_length(const Words& words);
+size_t max_word_length(const words::Words& words);
 
 
 void words::extract_words(Words& words, const std::string& text, const std::string& separators)
@@ -27,14 +27,15 @@ void words::extract_words(Words& words, const std::string& text, const std::stri
 }
 
 
-void swap(Words& words, size_t first, size_t second)
+void swap(words::Words& words, size_t first, size_t second)
 {
     auto temp = words[first];
     words[first] = words[second];
     words[second] = temp;
 }
 
-void sort(Words& words, size_t start, size_t end);
+
+void sort(words::Words& words, size_t start, size_t end);
 
 
 
@@ -42,19 +43,19 @@ void words::sort(Words& words)
 {
     if (!words.empty())
     {
-        sort(words, 0, words.size() - 1);
+        ::sort(words, 0, words.size() - 1);
     }
 }
 
 
-void words::sort(Words& words, size_t start, size_t end)
+void sort(words::Words& words, size_t start, size_t end)
 {
     if (!(start < end))
     {
         return;
     }
 
-    words::swap(words, start, (start + end) / 2);
+    swap(words, start, (start + end) / 2);
 
     size_t current = start;
 
@@ -62,11 +63,11 @@ void words::sort(Words& words, size_t start, size_t end)
     {
         if (*words[i] < *words[start])
         {
-            words::swap(words, ++current, i);
+            swap(words, ++current, i);
         }
     }
 
-    words::swap(words, start, current);
+    swap(words, start, current);
 
     if (current > start)
     {
@@ -80,7 +81,7 @@ void words::sort(Words& words, size_t start, size_t end)
 }
 
 
-size_t words::max_word_length(const Words& words)
+size_t max_word_length(const words::Words& words)
 {
     size_t max = 0;
 
