@@ -1,19 +1,32 @@
+import <iostream>;
 import integer;
 
-import <iostream>;
-
-
-int main(void)
+int main()
 {
-    Integer four {4};
-    Integer five {5};
-    Integer six {6};
-    Integer seven {7};
-    Integer eight {8};
+    std::cout << "Create i with the value 10." << std::endl;
+    Integer i {10};
+    i.showValue();
 
-    Integer result {four};
+    std::cout << "Change value  of i to 15." << std::endl;
+    i.setValue(15);
+    i.showValue();
 
-    std::cout << result.multiply(five).add(six).multiply(five).add(seven).multiply(five).add(eight).getValue() << std::endl;
+    std::cout << "Create j from object i." << std::endl;
+    Integer j {i};
+    j.showValue();
 
-    return 0;
+    std::cout << "Set value of j to 150 times that of i." << std::endl;
+    j.setValue(150 * i.getValue());
+    j.showValue();
+
+    std::cout << "Create k with the value 789." << std::endl;
+    Integer k {789};
+    k.showValue();
+
+    std::cout << "Set value of k to sum of i and j values." << std::endl;
+    k.setValue(i.getValue() + j.getValue());
+    k.showValue();
+
+    std::cout << "Result of comparing i and j is " << compare(i, j) << std::endl;
+    std::cout << "Result of comparing k and j is " << compare(k, j) << std::endl;
 }
