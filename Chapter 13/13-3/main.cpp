@@ -1,21 +1,24 @@
 import <iostream>;
 import box;
 
-/*
-  Because the C++20 compiler automatically rewrites != expression
-  in terms of == and/or even reverses the order of the operands,
-  only one additional operator overload definition is required to make it all work.
-*/
-
 int main()
 {
-    Box box1 {1, 2, 3};
-    Box box2 {3, 2, 1};
-    Box box3 {1, 2, 3};
+    Box box {2, 3, 4};
+    std::cout << "Box is " << box << std::endl;
+    size_t n {3};
+    box *= 3;
+    std::cout << "After multiplying by " << n << " box is " << box << std::endl;
+    box /= 3;
+    std::cout << "After dividing by " << n << ", the box is again " << box << std::endl;
 
-    // Try out all == and != operators (old and new, the latter in both directions)
-    std::cout << "box1 and box2 are " << (box1 == box2 ? "" : "not ") << "equal\n";
-    std::cout << "box1 and box3 are " << (box1 != box3 ? "not " : "") << "equal\n";
-    std::cout << "box1 is " << (box1 == 6.0 ? "" : "not ") << "equal to 6.0\n";
-    std::cout << "10.0 is " << (10 != box2 ? "not " : "") << "equal to box2\n";
+    Box newBox {2 * box};
+    std::cout << "Twice " << box << " is " << newBox << std::endl;
+
+    std::cout << "Half that is again " << (newBox / 2) << std::endl;
+
+    std::cout << "Adding both boxes gives " << (box + newBox) << std::endl;
+
+    box += newBox;
+
+    std::cout << "The same can be obtained by usign += as well: " << box << std::endl;
 }
