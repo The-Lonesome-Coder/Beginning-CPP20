@@ -1,6 +1,5 @@
 export module lion;
 
-import <string_view>;
 import animal;
 
 

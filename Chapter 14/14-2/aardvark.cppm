@@ -1,7 +1,5 @@
 export module aardvark;
 
-import <string_view>;
-
 import animal;
 
 
