@@ -9,6 +9,8 @@ int main()
     Aardvark aardvark { "Algernon", 50 };
     Lion lion { "Leo", 400 };
 
+    Lion copyLion = lion;
+
     aardvark.who();
-    lion.who();
+    copyLion.who();
 }

@@ -9,13 +9,5 @@ export class Aardvark : public virtual Animal
 {
     public:
         using Animal::Animal;
-
-        // Constructor
-        Aardvark(std::string_view name, const int& weight);
-
-        // Destructor
-        ~Aardvark() {};
-
-        // Member function
-        void who() const;
+        using Animal::who;
 };
