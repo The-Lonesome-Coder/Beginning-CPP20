@@ -1,10 +1,14 @@
+// Exercising the SparseArray class template
+// We create a sparse array of integers, populate 20 of its entries
+// (checking for duplicates among the randomly generated indices)
+// and output the resulting index/value pairs.
+
 import sparseArray;
-
-import <functional>; // For std::bind()
 import <iostream>;
-import <memory>;     // For std::make_shared<>() and std::shared_ptr<>
-import <random>;     // For random number generation
 
+import <random>;     // For random number generation
+import <functional>; // For std::bind()
+import <memory>;     // For std::make_shared<>() and std::shared_ptr<>
 
 // See Chapter 12 for an explanation of this principle.
 // The main difference here is that we need a std::uniform_int_distribution
@@ -41,14 +45,14 @@ int main()
         do
         {
             index = generate_random_index();    // Get a random index 0 to max_index-1
-        } while (numbers.element_exists_at(index));
+        } while (numbers.elementExistAt(index));
 
         numbers[index] = generate_random_value();  // Store value at new index position
     }
 
     for (size_t i {}; i <= max_index; ++i)       // Create count entries in numbers array
     {
-        if (numbers.element_exists_at(i))
+        if (numbers.elementExistAt(i))
             std::cout << "Element at index " << i << " equals " << numbers.at(i) << std::endl;
     }
 }

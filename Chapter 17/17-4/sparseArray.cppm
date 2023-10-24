@@ -1,32 +1,31 @@
 export module sparseArray;
 
-
-import <memory>;
 import <stdexcept>;
-import <string>;
 import <utility>;
 import <vector>;
 
 
-export template<typename T>
+export template <typename T>
 class SparseArray
 {
     public:
-        T& operator[](size_t index);
-        T& at(size_t index);
-        const T& at(size_t index) const;
-        bool element_exists_at(size_t index) const;
+        T& operator [] (const size_t& index);
+        T& at(const size_t& index);
+        const T& at(const size_t& index) const;
+        bool elementExistAt(const size_t& index) const;
+
 
     private:
-        T* find(size_t index);
-        const T* find(size_t index) const;
+        T* find(const size_t& index);
+        const T* find(const size_t& index) const;
 
-        std::vector<std::pair<size_t, T>> m_values;
+        std::vector<std::pair<size_t, T>> m_elements;
 };
 
 
-template<typename T>
-T& SparseArray<T>::operator[](size_t index)
+// Subscript operator
+template <typename T>
+T& SparseArray<T>::operator [] (const size_t& index)
 {
     if (auto* found { find(index) }; found)
     {
@@ -34,55 +33,60 @@ T& SparseArray<T>::operator[](size_t index)
     }
     else
     {
-        m_values.push_back({ index, T{} });
-        return m_values.back().second;
+        m_elements.push_back({ index, T{} });
+
+        return *find(index);
     }
 }
 
 
-template<typename T>
-const T& SparseArray<T>::at(size_t index) const
-{
-    const auto* found { find(index) };
-    if (found)
-    {
-        return *found;
-    }
-    else
-    {
-        throw std::out_of_range { "No value exists at index " + std::to_string(index) };
-    }
-}
-
-
-template<typename T>
-T& SparseArray<T>::at(size_t index)
+template <typename T>
+T& SparseArray<T>::at(const size_t& index)
 {
     return const_cast<T&>(std::as_const(*this).at(index));
 }
 
 
-template<typename T>
-bool SparseArray<T>::element_exists_at(size_t index) const
+template <typename T>
+const T& SparseArray<T>::at(const size_t& index) const
+{
+    if (const auto* found { find(index) }; found)
+    {
+        return *found;
+    }
+    else
+    {
+        throw std::out_of_range { "No value exist at given index." };
+    }
+}
+
+
+template <typename T>
+bool SparseArray<T>::elementExistAt(const size_t& index) const
 {
     return find(index) != nullptr;
 }
 
 
-template<typename T>
-const T* SparseArray<T>::find(size_t index) const
+// Helper function
+template <typename T>
+T* SparseArray<T>::find(const size_t& index)
 {
-    for (auto& pair : m_values)
-    {
-        if (pair.first == index)
-            return &pair.second;
-    }
-    return nullptr;
+    return const_cast<T*>(std::as_const(*this).find(index));
 }
 
 
-template<typename T>
-T* SparseArray<T>::find(size_t index)
+// Helper function - const version
+template <typename T>
+const T* SparseArray<T>::find(const size_t& index) const
 {
-    return const_cast<T*>(std::as_const(*this).find(index));
+    for (auto& element : m_elements)
+    {
+        if (std::get<0>(element) == index)
+        {
+            return &std::get<1>(element);
+        }
+    }
+
+    return nullptr;
 }
