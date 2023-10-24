@@ -12,7 +12,7 @@ class MyArray
 
         MyArray();                                          // Default constructor
         MyArray(size_t size);                               // Constructor
-        // MyArray(std::initializer_list<T> elements);      // List initializer constructor
+        MyArray(std::initializer_list<T> elements);      // List initializer constructor
         MyArray(const MyArray& another);                    // Copy constructor
 
         ~MyArray();                                         // Destructor
@@ -46,9 +46,6 @@ MyArray<T>::MyArray(size_t size)
     : m_elements { new T[size] {} }, m_size { size } {}
 
 
-/*
-// Enable this block of code will raise compiler error on "push_back()" member function
-// The compiler will raise C298 & C4267 - "Element '1': conversion from size_t to 'T' requires a narrowing conversion
 // List initializer constructor
 template <typename T>
 MyArray<T>::MyArray(std::initializer_list<T> elements)
@@ -60,7 +57,6 @@ MyArray<T>::MyArray(std::initializer_list<T> elements)
         ++i;
     }
 }
-*/
 
 
 // Copy constructor
@@ -136,7 +132,7 @@ void MyArray<T>::swap(MyArray& other) noexcept
 template <typename T>
 void MyArray<T>::push_back(const T& newElement)
 {
-    MyArray<T> copy { m_size + 1 };
+    MyArray<T> copy(m_size + 1);
 
     for (size_t i { 0 }; i < m_size; ++i)
     {
