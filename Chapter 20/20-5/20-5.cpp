@@ -1,4 +1,3 @@
-#include <format>
 #include <iostream>
 #include <numeric>
 #include <optional>
@@ -10,12 +9,10 @@ std::optional<T> average(ForwardIt begin, ForwardIt end)
 {
     const auto count { std::distance(begin, end) };
 
-    const auto sum { std::accumulate(begin, end, T {})};
+    const auto sum { std::accumulate(begin, end, T {}) };
 
     return count ? std::optional<T> { sum / count } : std::nullopt;
 }
-
-
 
 
 int main()
