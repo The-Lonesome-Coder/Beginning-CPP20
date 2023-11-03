@@ -6,11 +6,11 @@
 
 
 // Random number generator
-auto generator()
+auto generator(size_t max, size_t min = 1)
 {
     std::random_device rndDevice;
     std::mt19937 engine {rndDevice()};
-    std::uniform_int_distribution<int> dist {1, 100};
+    std::uniform_int_distribution<int> dist {1, 1000};
 
     auto gen = [&dist, &engine]() { return dist(engine); };
 
@@ -23,7 +23,7 @@ std::vector<int> fillVector(size_t size)
 {
     std::vector<int> numbers(size);
 
-    std::ranges::generate(numbers, generator());
+    std::ranges::generate(numbers, generator(size / 10));
 
     return numbers;
 }
@@ -48,15 +48,15 @@ void print(std::vector<int> nums)
 
 int main()
 {
-    size_t size { 1000 };
+    size_t size { 10'000 };
 
     std::vector<int> num { fillVector(size) };
-
     print(num);
 
     std::ranges::sort(num);
+    print(num);
+
     const auto [first, last] = std::ranges::unique(num.begin(), num.end());
     num.erase(first, last);
-
     print(num);
 }
