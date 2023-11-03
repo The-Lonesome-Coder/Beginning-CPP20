@@ -56,7 +56,6 @@ int main()
 
     std::ranges::sort(num);
     const auto [first, last] = std::ranges::unique(num.begin(), num.end());
-
     num.erase(first, last);
 
     print(num);
